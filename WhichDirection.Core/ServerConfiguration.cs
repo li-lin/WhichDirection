@@ -13,16 +13,22 @@ namespace WhichDirection.Core
     /// </summary>
     public class ServerConfiguration
     {
-        public static bool isOverTime()
+        #region 截止时间
+        /// <summary>
+        /// 是否已经截至
+        /// </summary>
+        /// <param name="cutoffTime">截至时间</param>
+        /// <returns></returns>
+        public static bool isOverTime(string cutoffTime)
         {
             bool b = false;
-            string strDeadline = "";
-            DateTime deadline = DateTime.Parse(strDeadline);
+            DateTime deadline = DateTime.Parse(cutoffTime);
             if (deadline <= DateTime.Now)
             {
                 b = true;
             }
             return b;
         }
+        #endregion
     }
 }
