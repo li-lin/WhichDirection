@@ -10,7 +10,9 @@ namespace WhichDirection.Domain.Entities
     {
         public int Id { get; set; }
         public string LoginName { get; set; }
+        public string Name { get; set; }
         public string Password { get; set; }
-        public int DirectionId { get; set; }
+        public string Direction { get; set; }
+        public int Authority { get; set; }
     }
 }

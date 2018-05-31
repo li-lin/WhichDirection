@@ -20,23 +20,37 @@ namespace WhichDirection.Core
     {
         WdDbContext dbContext = new WdDbContext();
         #region 获取学生信息
+        /// <summary>
+        /// 通过学号获取学生信息
+        /// </summary>
+        /// <param name="sid"></param>
+        /// <returns></returns>
         public Student GetStuInfo(int sid)
         {
             var stu = dbContext.Students.Where(x => x.Number == sid).FirstOrDefault();
             return stu;
         }
-        public IQueryable<Student> GetStuInfo(string name)
+        /// <summary>
+        /// 通过学生姓名或者专业名称获取学生信息
+        /// </summary>
+        /// <param name="nameOrmaior">学生姓名或者专业名称</param>
+        /// <returns></returns>
+        public IQueryable<Student> GetStuInfo(string nameOrmaior)
         {
-            var stulist = dbContext.Students.Where(x => x.Name == name);
-            return stulist;
-        }
-        public IQueryable<Student> GetStuInfoByMajor(string major)
-        {
-            var stulist = dbContext.Students.Where(x => x.Major == major);
+            var stulist = dbContext.Students.Where(x => x.Name == nameOrmaior);
+            if (stulist == null)
+            {
+                stulist = dbContext.Students.Where(x => x.Major == nameOrmaior);
+            }
             return stulist;
         }
         #endregion
         #region 添加/修改学生信息
+        /// <summary>
+        /// 添加或者修改学生信息
+        /// </summary>
+        /// <param name="student">Student 对象</param>
+        /// <returns></returns>
         public bool AddStudent(Student student)
         {
             if (dbContext.Students.Where(x => x.SId == student.SId).FirstOrDefault() == null)
@@ -50,6 +64,30 @@ namespace WhichDirection.Core
                 dir.Major = student.Name;
                 dir.Number = student.Number;   
                 dir.Password = student.Password;
+            }
+            try
+            {
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+        #region 删除学生信息
+        /// <summary>
+        /// 删除学生信息
+        /// </summary>
+        /// <param name="studentlist">学号集合</param>
+        /// <returns></returns>
+        public bool deleteStu(List<int> stuNumber)
+        {
+            foreach(int n in stuNumber)
+            {
+                var stu = dbContext.Students.Where(x => x.Number == n).FirstOrDefault();
+                dbContext.Students.Remove(stu);
             }
             try
             {
