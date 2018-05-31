@@ -13,5 +13,16 @@ namespace WhichDirection.Core
     /// </summary>
     public class ServerConfiguration
     {
+        public static bool isOverTime()
+        {
+            bool b = false;
+            string strDeadline = "";
+            DateTime deadline = DateTime.Parse(strDeadline);
+            if (deadline <= DateTime.Now)
+            {
+                b = true;
+            }
+            return b;
+        }
     }
 }
