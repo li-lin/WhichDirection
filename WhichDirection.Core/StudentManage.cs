@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WhichDirection.Domain;
 using WhichDirection.Domain.Entities;
 
 namespace WhichDirection.Core
@@ -17,9 +18,22 @@ namespace WhichDirection.Core
     /// </summary>
     public class StudentManage
     {
-        
+        WdDbContext dbContext = new WdDbContext();
         #region 查询学生信息
-        public Student 
+        public IQueryable<Student> GetStudent(string msg)
+        {
+            var stulist = dbContext.Students.Where(x => x.LoginName == msg);
+
+            if (stulist == null)
+
+            {
+
+                stulist = dbContext.Students.Where(x => x.Major == msg);
+
+            }
+
+            return stulist;
+        }
         #endregion
     }
 }
