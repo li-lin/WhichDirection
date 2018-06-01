@@ -118,5 +118,13 @@ namespace WhichDirection.Core
             }
         }
         #endregion
+        #region 获取所有教师信息
+        public IQueryable<Teacher> GetAllTeacher()
+        {
+            var list = from n in dbContext.Teachers
+                       select n;
+            return list;
+        }
+        #endregion
     }
 }

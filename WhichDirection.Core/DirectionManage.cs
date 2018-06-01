@@ -77,5 +77,17 @@ namespace WhichDirection.Core
             return dir;
         }
         #endregion
+        #region 获取所有方向信息
+        /// <summary>
+        /// 获取所有方向信息
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<Direction> GetAllDirection()
+        {
+            var list = from n in dbContext.Directions
+                       select n;
+            return list;
+        }
+        #endregion
     }
 }
