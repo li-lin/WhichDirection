@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WhichDirection.Domain.Entities;
 
 namespace WhichDirection.Core
 {
@@ -16,5 +17,9 @@ namespace WhichDirection.Core
     /// </summary>
     public class StudentManage
     {
+        
+        #region 查询学生信息
+        public Student 
+        #endregion
     }
 }

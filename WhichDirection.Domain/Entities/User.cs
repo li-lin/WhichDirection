@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace WhichDirection.Domain.Entities
 {
-    public class Course
+    public class User
     {
         public int Id { get; set; }
-        public string CourseName { get; set; }
-
+        public string LoginName { get; set; }
+        public string Pwd { get; set; }
+        public bool IsTeacher { get; set; }
     }
 }

@@ -9,5 +9,6 @@ namespace WhichDirection.Domain
 {
     public class WdDbContext : DbContext
     {
+
     }
 }

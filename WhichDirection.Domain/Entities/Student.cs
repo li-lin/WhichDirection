@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace WhichDirection.Domain.Entities
 {
-    public class Student
+    public class Student:User
     {
+        public Student()
+        {
+            Directions = new List<Direction>();
+        }
+
+        public string Major { get; set; }
+        public bool IsCompleted { get; set; }
+
+        public IList<Direction> Directions { get; set; }
     }
 }
