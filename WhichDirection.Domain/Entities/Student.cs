@@ -12,7 +12,7 @@ namespace WhichDirection.Domain.Entities
         {
             Directions = new List<Direction>();
         }
-
+        
         public string Major { get; set; }
         public bool IsCompleted { get; set; }
 

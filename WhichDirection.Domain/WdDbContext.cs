@@ -10,19 +10,9 @@ namespace WhichDirection.Domain
 {
     public class WdDbContext : DbContext
     {
-        public WdDbContext()
-
-            : base("name=connStr")
-
-        {
-
-        }
-
-
-
         public DbSet<Course> Courses { get; set; }
 
-        public DbSet<Direction> Directions { get; set; }
+        public DbSet<Direction> Direction { get; set; }
 
         public DbSet<DirectionOrder> DirectionOrders { get; set; }
 

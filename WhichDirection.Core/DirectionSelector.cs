@@ -17,5 +17,6 @@ namespace WhichDirection.Core
     /// </summary>
     public class DirectionSelector
     {
+
     }
 }
