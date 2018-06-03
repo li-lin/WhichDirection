@@ -12,7 +12,7 @@ namespace WhichDirection.Domain.Entities
         public int Id { get; set; }
         public int Order { get; set; }
         
-        public Direction Directions { get; set; }
-        public Student Students { get; set; }
+        public Direction Direction { get; set; }
+        public Student Student { get; set; }
     }
 }

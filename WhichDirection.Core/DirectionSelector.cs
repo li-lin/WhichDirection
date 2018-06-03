@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WhichDirection.Domain;
+using WhichDirection.Domain.Entities;
 
 namespace WhichDirection.Core
 {
@@ -17,6 +19,32 @@ namespace WhichDirection.Core
     /// </summary>
     public class DirectionSelector
     {
-
+        WdDbContext dbContext = new WdDbContext();
+        #region 记录学生选择
+        /// <summary>
+        /// 将选择顺序保存至数据库
+        /// </summary>
+        /// <param name="stu">学生</param>
+        /// <param name="Dir">方向</param>
+        /// <param name="Order">顺序</param>
+        /// <returns></returns>
+        public bool SelectDirection(Student stu,Direction Dir,int Order)
+        {
+            DirectionOrder d = new DirectionOrder();
+            d.Order = Order;
+            d.Student = stu;
+            d.Direction = Dir;
+            dbContext.DirectionOrders.Add(d);
+            try
+            {
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

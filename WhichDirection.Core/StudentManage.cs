@@ -40,7 +40,7 @@ namespace WhichDirection.Core
         /// </summary>
         /// <param name="sid">学号</param>
         /// <returns></returns>
-        public Student GetStuInfo(string sid)
+        public Student GetStuInfo2(string sid)
         {
             var stu = dbContext.Students.Where(x => x.LoginName == sid).FirstOrDefault();
             return stu;
