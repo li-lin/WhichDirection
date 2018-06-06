@@ -51,6 +51,7 @@
     <Compile Include="Entities\Direction.cs" />
     <Compile Include="Entities\DirectionOrder.cs" />
     <Compile Include="Entities\Score.cs" />
+    <Compile Include="Entities\ServerConfig.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Entities\User.cs" />
