@@ -9,9 +9,18 @@ namespace WhichDirection.Domain.Entities
     public class Score
     {
         public int Id { get; set; }
+        /// <summary>
+        /// 成绩
+        /// </summary>
         public float Grade { get; set; }
 
+        /// <summary>
+        /// 学生的课程
+        /// </summary>
         public Course Courses { get; set; }
+        /// <summary>
+        /// 学生
+        /// </summary>
         public Student Students { get; set; }
     }
 }

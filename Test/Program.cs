@@ -37,7 +37,6 @@ namespace Test
                     LoginName = "JC200803040",
                     Name="tr",
                     Pwd = "123456",
-                    Department = "CS",
                     IsTeacher = true
                 };
                 var d = new Direction()

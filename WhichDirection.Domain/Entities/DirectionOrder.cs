@@ -10,9 +10,18 @@ namespace WhichDirection.Domain.Entities
     {
 
         public int Id { get; set; }
+        /// <summary>
+        /// 表示方向顺序
+        /// </summary>
         public int Order { get; set; }
         
+        /// <summary>
+        /// 选择的方向
+        /// </summary>
         public Direction Direction { get; set; }
+        /// <summary>
+        /// 学生
+        /// </summary>
         public Student Student { get; set; }
     }
 }

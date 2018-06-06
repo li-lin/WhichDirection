@@ -12,8 +12,11 @@ namespace WhichDirection.Domain.Entities
         {
             Directions = new List<Direction>();
         }
+        /// <summary>
+        /// 是否为管理员
+        /// </summary>
         public bool IsAdmin { get; set; }
-        public string Department { get; set; }
+
         public IList<Direction> Directions { get; set; }
     }
 }
