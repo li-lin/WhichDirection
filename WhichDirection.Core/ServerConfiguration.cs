@@ -19,7 +19,7 @@ namespace WhichDirection.Core
         /// </summary>
         /// <param name="cutoffTime">截至时间</param>
         /// <returns></returns>
-        public static bool isOverTime(string cutoffTime)
+        public static bool IsOverTime(string cutoffTime)
         {
             bool b = false;
             DateTime deadline = DateTime.Parse(cutoffTime);
