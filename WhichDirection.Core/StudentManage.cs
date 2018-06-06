@@ -20,6 +20,15 @@ namespace WhichDirection.Core
     public class StudentManage
     {
         WdDbContext dbContext = new WdDbContext();
+        #region 获取所有学生信息
+        public IList<Student> GetAllStuMsg()
+        {
+            var stulist = from n in dbContext.Students
+                          select n;
+            var stulist1 = stulist.ToList();
+            return stulist1;
+        }
+        #endregion
         #region 查询学生信息
         /// <summary>
         /// 通过学号或者专业查询学生信息
