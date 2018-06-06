@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -115,5 +117,53 @@ namespace WhichDirection.Core
             }
         }
         #endregion
+        #region 导入学生信息
+        public int importStudentsFromExcel(string path)
+        {
+            int result = 0;//0：失败
+            string connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + path + "; Extended Properties =\"Excel 12.0;HDR=YES\"";
+            using (OleDbConnection Connection = new OleDbConnection(connectionString))
+            {
+                DataTable dt = new DataTable();
+                Connection.Open();
+                using (OleDbCommand command = new OleDbCommand())
+                {
+                    command.Connection = Connection;
+                    command.CommandText = "SELECT * FROM [学生名单$]";
+                    OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+                    adapter.Fill(dt);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        Student s = new Student();
+                        s.LoginName = dr["学号"].ToString();
+                        s.Name = dr["姓名"].ToString();
+                        s.Major = dr["专业"].ToString();
+                        s.IsTeacher = false;
+                        s.IsCompleted = false;
+                        s.Pwd = "123456";
+                        s.Directions = null;
+                        //判断导入学生信息是否与数据库中重复。
+                        if (checkStudentExist(s))
+                        {
+                            return 2;
+                        }
+                        dbContext.Students.Add(s);
+                    }
+                    int i = dbContext.SaveChanges();
+                    if (i > 0) result = 1; //1：成功
+                }
+            }
+            return result;
+        }
+
+        private bool checkStudentExist(Student student)
+        {
+            bool r = false;
+            Student ss = dbContext.Students.SingleOrDefault(s => s.LoginName == student.LoginName);
+            if (ss != null) r = true;
+            return r;
+        }
+        #endregion
+
     }
 }

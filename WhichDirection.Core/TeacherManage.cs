@@ -34,9 +34,9 @@ namespace WhichDirection.Core
             {
                 return dbContext.Teachers.Where(x => x.Name == msg).FirstOrDefault();
             }
-            else if (dbContext.Teachers.Where(x => x.Department == msg).FirstOrDefault() != null)
+            else if (dbContext.Teachers.Where(x => x.Directions[0].Name == msg).FirstOrDefault() != null)
             {
-                return dbContext.Teachers.Where(x => x.Department == msg).FirstOrDefault();
+                return dbContext.Teachers.Where(x => x.Directions[0].Name == msg).FirstOrDefault();
             }
             else
             {
@@ -62,7 +62,7 @@ namespace WhichDirection.Core
                 t.LoginName = teacher.LoginName;
                 t.Name = teacher.Name;
                 t.Pwd = teacher.Pwd;
-                t.Department = teacher.Department;
+                t.Directions = teacher.Directions;
                 t.IsTeacher = true;
             }
             try

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "UpExcel";
+}
+
+<h2>上传Excel</h2>
+@using (Html.BeginForm("Up", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="提交" />
+}
+
