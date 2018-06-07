@@ -61,7 +61,7 @@ namespace Test
                     if (t.IsTeacher)
                     {
                         var tech = db.Teachers.Include("Directions").FirstOrDefault(tt => tt.Id == t.Id);
-                        Console.WriteLine($"UserName:{tech.Name}, Password:{tech.Pwd}, Department:{tech.Department}, Direction:{tech.Directions.Count}");
+                        Console.WriteLine($"UserName:{tech.Name}, Password:{tech.Pwd}, Direction:{tech.Direction.Name}");
                     }
                     else
                     {

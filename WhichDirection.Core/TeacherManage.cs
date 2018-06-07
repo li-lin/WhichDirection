@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WhichDirection.Domain;
 using WhichDirection.Domain.Entities;
+
 namespace WhichDirection.Core
 {
     /// <summary>
@@ -18,114 +19,144 @@ namespace WhichDirection.Core
     public class TeacherManage
     {
         WdDbContext dbContext = new WdDbContext();
+
         #region 查询教师信息
         /// <summary>
-        /// 查询教师信息
+        /// 查询教师信息（工号）
         /// </summary>
-        /// <param name="msg">工号/姓名/方向</param>
+        /// <param name="number">工号</param>
         /// <returns></returns>
-        public Teacher GetTeacher(string msg)
+        public Teacher GetTeacherByNumber(string number)
         {
-            if (dbContext.Teachers.Where(x => x.LoginName == msg).FirstOrDefault() != null)
-            {
-                return dbContext.Teachers.Where(x => x.LoginName == msg).FirstOrDefault();
-            }
-            else if (dbContext.Teachers.Where(x => x.Name == msg).FirstOrDefault() != null)
-            {
-                return dbContext.Teachers.Where(x => x.Name == msg).FirstOrDefault();
-            }
-            else if (dbContext.Teachers.Where(x => x.Directions[0].Name == msg).FirstOrDefault() != null)
-            {
-                return dbContext.Teachers.Where(x => x.Directions[0].Name == msg).FirstOrDefault();
-            }
-            else
-            {
-                return null;
-            }
+            return dbContext.Teachers.Where(t => t.LoginName == number).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 查询教师信息（姓名）
+        /// </summary>
+        /// <param name="name">姓名</param>
+        /// <returns></returns>
+        public Teacher GetTeacherByName(string name)
+        {
+            return dbContext.Teachers.Where(t => t.Name == name).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 查询教师信息（方向名）
+        /// </summary>
+        /// <param name="directionName">方向名</param>
+        /// <returns></returns>
+        public Teacher GetTeacherByDirection(string directionName)
+        {
+            return dbContext.Teachers.Where(t => t.Direction.Name == directionName).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 获取所有教师信息
+        /// </summary>
+        /// <returns>所有教师信息列表</returns>
+        public IList<Teacher> GetTeachers()
+        {
+            var query = from t in dbContext.Teachers
+                        select t;
+            return query.ToList<Teacher>();
         }
         #endregion
+
         #region 添加/修改教师信息
         /// <summary>
-        /// 添加/修改教师信息
+        /// 添加教师信息
         /// </summary>
         /// <param name="teacher">教师对象</param>
-        /// <returns></returns>
+        /// <returns>是否添加成功</returns>
         public bool AddTeacher(Teacher teacher)
         {
-            if (dbContext.Teachers.Where(x => x.Id == teacher.Id).FirstOrDefault() == null)
+            bool b = false;
+            Teacher t = dbContext.Teachers.Where(x => x.Id == teacher.Id).FirstOrDefault();
+            if (t == null)
             {
                 dbContext.Teachers.Add(teacher);
+
+                int i = dbContext.SaveChanges();
+                if (i > 0)
+                {
+                    b = true;
+                }
             }
-            else
+            return b;
+        }
+
+        /// <summary>
+        /// 修改教师信息
+        /// </summary>
+        /// <param name="teacher">包含新信息的教师</param>
+        /// <returns>是否修改成功</returns>
+        public bool ModifyTeacher(Teacher teacher)
+        {
+            bool b = false;
+            Teacher t = dbContext.Teachers.Where(x => x.Id == teacher.Id).FirstOrDefault();
+            if (t != null)
             {
-                Teacher t = dbContext.Teachers.Where(x => x.Id == teacher.Id).FirstOrDefault();
                 t.LoginName = teacher.LoginName;
                 t.Name = teacher.Name;
                 t.Pwd = teacher.Pwd;
-                t.Directions = teacher.Directions;
-                t.IsTeacher = true;
+                t.Direction = teacher.Direction;
+                t.IsTeacher = teacher.IsTeacher;
+
+                int i = dbContext.SaveChanges();
+                if (i > 0)
+                {
+                    b = true;
+                }
             }
-            try
-            {
-                dbContext.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return b;
         }
         #endregion
+
         #region 删除教师信息
         /// <summary>
         /// 删除教师信息
         /// </summary>
-        /// <param name="id">教师ID</param>
-        /// <returns></returns>
-        public bool DeleteTeacher(int id)
+        /// <param name="teacher">需要删除的教师</param>
+        /// <returns>是否删除成功</returns>
+        public bool DeleteTeacher(Teacher teacher)
         {
-            var t = dbContext.Teachers.Where(x => x.Id == id).FirstOrDefault();
-            dbContext.Teachers.Remove(t);
-            try
+            bool b = false;
+            var t = dbContext.Teachers.Where(x => x.Id == teacher.Id).FirstOrDefault();
+            if (t != null)
             {
-                dbContext.SaveChanges();
-                return true;
+                dbContext.Teachers.Remove(t);
+
+                int i = dbContext.SaveChanges();
+                if (i > 0)
+                {
+                    b = true;
+                }
             }
-            catch
-            {
-                return false;
-            }
+            return b;
         }
         #endregion
+
         #region 教师权限设置
         /// <summary>
         /// 设置权限
         /// </summary>
-        /// <param name="id">教师ID</param>
+        /// <param name="teacher">教师</param>
         /// <param name="authority">权限</param>
         /// <returns></returns>
-        public bool AddAuthority(int id, bool authority)
+        public bool SetAuthority(Teacher teacher, bool authority)
         {
-            Teacher t = dbContext.Teachers.Where(x => x.Id == id).FirstOrDefault();
+            bool b = false;
+            Teacher t = dbContext.Teachers.Where(x => x.Id == teacher.Id).FirstOrDefault();
             t.IsAdmin = authority;
-            try
+
+            int i = dbContext.SaveChanges();
+            if (i > 0)
             {
-                dbContext.SaveChanges();
-                return true;
+                b = true;
             }
-            catch
-            {
-                return false;
-            }
+            return b;
         }
-        #endregion
-        #region 获取所有教师信息
-        public IQueryable<Teacher> GetAllTeacher()
-        {
-            var list = from n in dbContext.Teachers
-                       select n;
-            return list;
-        }
-        #endregion
+        #endregion       
     }
 }

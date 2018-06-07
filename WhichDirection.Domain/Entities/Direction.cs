@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace WhichDirection.Domain.Entities
 {
@@ -20,6 +21,7 @@ namespace WhichDirection.Domain.Entities
         /// <summary>
         /// 方向负责老师
         /// </summary>
+        [Required]
         public Teacher Director { get; set; }
     }
 }
