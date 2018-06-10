@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "ShowStuMsg";
+}
+
+<h2>输入要查询的学生信息</h2>
+@using (Html.BeginForm("GetStuMsg", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="text" name="msg" />
+    <input type="submit" value="查询" />
+}
+

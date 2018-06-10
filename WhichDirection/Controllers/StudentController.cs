@@ -13,6 +13,7 @@ namespace WhichDirection.Controllers
 {
     public class StudentController : Controller
     {
+        StudentManage stu = new StudentManage();
         WdDbContext dbContext = new WdDbContext();
         // GET: Student
         public ActionResult Index()
@@ -20,11 +21,15 @@ namespace WhichDirection.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 上传EXCEL
+        /// </summary>
+        /// <returns></returns>
         public ActionResult UpExcel()
         {
             return View();
         }
-
+        #region 上传文件
         [HttpPost]
         public ActionResult Up(HttpPostedFileBase file)
         {
@@ -50,5 +55,50 @@ namespace WhichDirection.Controllers
             }
             return Content("NO");
         }
+        #endregion
+        #region 查询学生信息
+        public ActionResult ShowStuMsg()
+        {
+            return View();
+        }
+
+        public ActionResult GetStuMsg(string msg)
+        {
+            ViewBag.stumsg = stu.GetStuInfo(msg);
+            if (ViewBag.stumsg != null)
+            {
+                return View();
+            }
+            else
+            {
+                return Content("信息有误");
+            }
+        }
+        #endregion
+        #region 添加学生信息
+        public ActionResult AddStuMsg()
+        {
+            return View();
+        }
+        
+        public ActionResult AddStuMsg(Student stud)
+        {
+            Student student = new Student();
+            student.Name = stud.Name;
+            student.LoginName = stud.LoginName;
+            student.Major = stud.Major;
+            student.IsCompleted = false;
+            student.IsTeacher = false;
+            student.Pwd = "123456";
+            if (stu.AddStudent(student))
+            {
+                return Content("<script>alert('添加信息成功');window.location.href='../Student/Index';</script>");
+            }
+            else
+            {
+                return Content("<script>alert('添加信息失败');window.location.href='../Student/AddStuMsg';</script>");
+            }
+        }
+        #endregion
     }
 }

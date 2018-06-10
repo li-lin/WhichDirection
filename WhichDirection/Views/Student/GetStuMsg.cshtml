@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "GetStuMsg";
+}
+
+<h2>学生信息</h2>
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>学号</th>
+        <th>专业</th>
+    </tr>
+    @foreach (var n in ViewBag.stumsg)
+    {
+        <tr>
+            <td>@n.Name</td>
+            <td>@n.LoginName</td>
+            <td>@n.Major</td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,33 @@
+﻿@model WhichDirection.Domain.Entities.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>请登录</h2>
+<div class="row">
+    @using (Html.BeginForm("LoginIn", "Login", FormMethod.Post, new { @class = "col-sm-6 col-sm-offset-3 panel panel-body" }))
+    {
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(m => m.LoginName)
+                </div>
+                @Html.TextBoxFor(m => m.LoginName, new { @class = "form-control input-lg", placeholder = "学号/工号" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(m => m.Pwd)
+                </div>
+                @Html.PasswordFor(m => m.Pwd, new { @class = "form-control input-lg", placeholder = "密码" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">登录</button>
+            </div>
+        </div>
+    }
+</div>

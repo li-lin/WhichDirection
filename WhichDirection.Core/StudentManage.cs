@@ -31,42 +31,20 @@ namespace WhichDirection.Core
         #endregion
         #region 查询学生信息
         /// <summary>
-        /// 通过学号或者专业查询学生信息
-        /// </summary>
-        /// <param name="msg">姓名或者专业</param>
-        /// <returns></returns>
-        public IQueryable<Student> GetStudent(string msg)
-        {
-            var stulist = dbContext.Students.Where(x => x.Name == msg);
-            if (stulist == null)
-            {
-                stulist = dbContext.Students.Where(x => x.Major == msg);
-            }
-            return stulist;
-        }
-        #endregion
-        #region 查询学生信息
-        /// <summary>
-        /// 通过学号获取学生信息
-        /// </summary>
-        /// <param name="sid">学号</param>
-        /// <returns></returns>
-        public Student GetStuInfo2(string sid)
-        {
-            var stu = dbContext.Students.Where(x => x.LoginName == sid).FirstOrDefault();
-            return stu;
-        }
-        /// <summary>
         /// 通过学生姓名或者专业名称获取学生信息
         /// </summary>
-        /// <param name="nameOrmaior">学生姓名或者专业名称</param>
+        /// <param name="msg">学生姓名或者专业名称</param>
         /// <returns></returns>
-        public IQueryable<Student> GetStuInfo(string nameOrmaior)
+        public IList<Student> GetStuInfo(string msg)
         {
-            var stulist = dbContext.Students.Where(x => x.Name == nameOrmaior);
+            var stulist = dbContext.Students.Where(x => x.LoginName == msg).ToList();
             if (stulist == null)
             {
-                stulist = dbContext.Students.Where(x => x.Major == nameOrmaior);
+                stulist = dbContext.Students.Where(x => x.Name == msg).ToList();
+                if (stulist == null)
+                {
+                    stulist = dbContext.Students.Where(x => x.Major == msg).ToList();
+                }
             }
             return stulist;
         }
