@@ -11,7 +11,7 @@ namespace WhichDirection.Domain.Entities
     /// </summary>
     public class ServerConfig
     {
-        public int ConfigId { get; set; }
+        public int Id { get; set; }
         public DateTime Deadline { get; set; }
     }
 }

@@ -13,8 +13,8 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            //test1();
-            test2();
+            test1();
+            //test2();
 
             Console.WriteLine("done");
             Console.ReadKey();

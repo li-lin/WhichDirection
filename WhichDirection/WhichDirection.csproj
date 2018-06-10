@@ -246,7 +246,7 @@
     <Content Include="Views\Student\ShowStuMsg.cshtml" />
     <Content Include="Views\Student\GetStuMsg.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Student\AddStuMsg.cshtml" />
+    <Content Include="Views\Student\AddStuMsgView.cshtml" />
     <Content Include="Views\Choice\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

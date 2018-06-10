@@ -65,7 +65,7 @@ namespace WhichDirection.Controllers
         public ActionResult GetStuMsg(string msg)
         {
             ViewBag.stumsg = stu.GetStuInfo(msg);
-            if (ViewBag.stumsg != null)
+            if (ViewBag.stumsg.Count != 0)
             {
                 return View();
             }
@@ -76,11 +76,12 @@ namespace WhichDirection.Controllers
         }
         #endregion
         #region 添加学生信息
-        public ActionResult AddStuMsg()
+        public ActionResult AddStuMsgView()
         {
             return View();
         }
-        
+
+        [HttpPost]
         public ActionResult AddStuMsg(Student stud)
         {
             Student student = new Student();

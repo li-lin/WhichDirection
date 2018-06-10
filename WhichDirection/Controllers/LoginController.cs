@@ -27,7 +27,7 @@ namespace WhichDirection.Controllers
                 if (admin == null)
                 {
                     ModelState.AddModelError("LoginName", "用户名或密码错误");
-                    return View();
+                    return RedirectToAction("Index", "Student");
                 }
                 else
                 {
@@ -42,7 +42,7 @@ namespace WhichDirection.Controllers
                 if (stu == null)
                 {
                     ModelState.AddModelError("LoginName", "用户名或密码错误");
-                    return View();
+                    return RedirectToAction("Index", "Student");
                 }
                 else
                 {

@@ -38,10 +38,10 @@ namespace WhichDirection.Core
         public IList<Student> GetStuInfo(string msg)
         {
             var stulist = dbContext.Students.Where(x => x.LoginName == msg).ToList();
-            if (stulist == null)
+            if (stulist.Count == 0)
             {
                 stulist = dbContext.Students.Where(x => x.Name == msg).ToList();
-                if (stulist == null)
+                if (stulist.Count == 0)
                 {
                     stulist = dbContext.Students.Where(x => x.Major == msg).ToList();
                 }
