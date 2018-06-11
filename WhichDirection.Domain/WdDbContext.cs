@@ -17,7 +17,7 @@ namespace WhichDirection.Domain
 
         public DbSet<Course> Courses { get; set; }
 
-        public DbSet<Direction> Direction { get; set; }
+        public DbSet<Direction> Directions { get; set; }
 
         public DbSet<DirectionOrder> DirectionOrders { get; set; }
 
@@ -30,5 +30,7 @@ namespace WhichDirection.Domain
         public DbSet<User> Users { get; set; }
 
         public DbSet<ServerConfig> ServerConfigurations { get; set; }
+
+        public DbSet<DirectionCourse> DirectionCourses { get; set; }
     }
 }

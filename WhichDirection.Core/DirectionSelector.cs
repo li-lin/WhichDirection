@@ -25,16 +25,26 @@ namespace WhichDirection.Core
         /// 将选择顺序保存至数据库
         /// </summary>
         /// <param name="stu">学生</param>
-        /// <param name="Dir">方向</param>
-        /// <param name="Order">顺序</param>
+        /// <param name="directionOrders">方向Id和排序的键值对</param>
         /// <returns></returns>
-        public bool SelectDirection(Student stu,Direction Dir,int Order)
+        public bool SelectDirection(Student stu,Dictionary<int,int> directionOrders)
         {
-            DirectionOrder d = new DirectionOrder();
-            d.Order = Order;
-            d.Student = stu;
-            d.Direction = Dir;
-            dbContext.DirectionOrders.Add(d);
+            foreach(var item in directionOrders)
+            {
+                DirectionOrder dd = new DirectionOrder();
+                dd.Order = item.Value;
+                dd.Student = stu;
+                dd.Direction = dbContext.Directions.SingleOrDefault(d => d.Id == item.Key);
+                if (dd.Direction == null)
+                {
+                    throw new Exception($"系统错误：方向[{item.Key}]信息未找到！");
+                }
+                else
+                {
+                    dbContext.DirectionOrders.Add(dd);
+                }
+            }
+           
             try
             {
                 dbContext.SaveChanges();

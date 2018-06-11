@@ -102,6 +102,7 @@ namespace WhichDirection.Core
                 t.Pwd = teacher.Pwd;
                 t.Direction = teacher.Direction;
                 t.IsTeacher = teacher.IsTeacher;
+                t.IsAdmin = teacher.IsAdmin;
 
                 int i = dbContext.SaveChanges();
                 if (i > 0)

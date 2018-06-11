@@ -46,7 +46,7 @@ namespace Test
                 };
                 db.Students.Add(s);
                 db.Teachers.Add(t);
-                db.Direction.Add(d);
+                db.Directions.Add(d);
                 db.SaveChanges();
             }
         }

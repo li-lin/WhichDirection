@@ -20,7 +20,7 @@ namespace WhichDirection.Domain
             {
                 var config = new ServerConfig()
                 {
-                    Deadline = DateTime.Now.AddDays(30)
+                    Deadline = new DateTime(2018, 7, 30)
                 };
                 db.ServerConfigurations.Add(config);
 

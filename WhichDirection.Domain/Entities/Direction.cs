@@ -19,6 +19,11 @@ namespace WhichDirection.Domain.Entities
         public string Name { get; set; }
 
         /// <summary>
+        /// 填报人数上限
+        /// </summary>
+        public int Max { get; set; }
+
+        /// <summary>
         /// 方向负责老师
         /// </summary>
         [Required]

@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace WhichDirection.Domain.Entities
 {
-    public class Score
+    /// <summary>
+    /// 方向与考核课程对应关系
+    /// </summary>
+    public class DirectionCourse
     {
         public int Id { get; set; }
-        /// <summary>
-        /// 成绩得分
-        /// </summary>
-        public float Value { get; set; }
-
-        /// <summary>
-        /// 学生的课程
-        /// </summary>
         public Course Course { get; set; }
+        public Direction Direction { get; set; }
         /// <summary>
-        /// 学生
+        /// 课程在该方向所在比重
         /// </summary>
-        public Student Student { get; set; }
+        public double Proportion { get; set; }
     }
 }

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Entities\Course.cs" />
     <Compile Include="Entities\Direction.cs" />
+    <Compile Include="Entities\DirectionCourse.cs" />
     <Compile Include="Entities\DirectionOrder.cs" />
     <Compile Include="Entities\Score.cs" />
     <Compile Include="Entities\ServerConfig.cs" />

@@ -24,9 +24,8 @@ namespace WhichDirection.Core
         public IList<Student> GetAllStuMsg()
         {
             var stulist = from n in dbContext.Students
-                          select n;
-            var stulist1 = stulist.ToList();
-            return stulist1;
+                          select n;           
+            return stulist.ToList();
         }
         #endregion
         #region 查询学生信息
@@ -128,7 +127,6 @@ namespace WhichDirection.Core
                         s.IsTeacher = false;
                         s.IsCompleted = false;
                         s.Pwd = "123456";
-                        s.Directions = null;
                         //判断导入学生信息是否与数据库中重复。
                         if (checkStudentExist(s))
                         {
