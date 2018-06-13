@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WhichDirection.Core</RootNamespace>
     <AssemblyName>WhichDirection.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +54,7 @@
     <Compile Include="ServerConfiguration.cs" />
     <Compile Include="StudentManage.cs" />
     <Compile Include="TeacherManage.cs" />
+    <Compile Include="UserManage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WhichDirection.Domain\WhichDirection.Domain.csproj">

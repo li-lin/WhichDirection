@@ -24,6 +24,36 @@ namespace WhichDirection.Domain
                 };
                 db.ServerConfigurations.Add(config);
 
+                var teacher1 = new Teacher
+                {
+                    LoginName = "JC01",
+                    Pwd = "123456",
+                    IsTeacher = true,
+                    IsAdmin = false,
+                    Name = "李小林"
+                };
+                var teacher2 = new Teacher
+                {
+                    LoginName = "JC02",
+                    Pwd = "123456",
+                    IsTeacher = true,
+                    IsAdmin = true,
+                    Name = "林小李"
+                };
+                var student = new Student
+                {
+                    LoginName = "20160000",
+                    Pwd = "123456",
+                    IsTeacher = false,
+                    Gender="男",
+                    IsCompleted = false,
+                    Major = "软件工程",
+                    Name = "王小二"
+                };
+                db.Teachers.Add(teacher1);
+                db.Teachers.Add(teacher2);
+                db.Students.Add(student);
+
                 db.SaveChanges();
             }
         }

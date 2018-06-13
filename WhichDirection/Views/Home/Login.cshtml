@@ -1,0 +1,32 @@
+﻿@model WhichDirection.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "登录";
+}
+<div class="page-header">
+    <h2>请登录</h2>
+</div>
+<div class="">
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <label for="LoginName" class="col-sm-4 control-label">登录名</label>
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.LoginName, new { @class = "form-control col-sm-8", placeholder = "学号/工号" })
+                @Html.ValidationMessageFor(m => m.LoginName, null, new { @class = "text-danger col-sm-4" })
+            </div>     
+        </div>
+        <div class="form-group">
+            <label for="Password" class="col-sm-4 control-label">密码</label>
+            <div class="col-sm-8">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control col-sm-8", placeholder = "密码" })
+                @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger col-sm-4" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-primary">登录</button>
+            </div>
+        </div>
+    }
+</div>

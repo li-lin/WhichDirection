@@ -1,43 +1,74 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>计算机与软件学院 - 方向志愿填报平台 - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        body {
+            padding-top: 50px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("计算机与软件学院方向志愿填报平台", "Login", "Home", null, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("关于", "About", "Home")</li>
-                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                    @if (Session["teacher"] != null && Session["teacher"].ToString() != string.Empty)
+                    {
+                        <li>@Html.ActionLink("管理面板", "Index", "Teacher")</li>
+                        <li>@Html.ActionLink("修改密码", "ChangePassword", "Home")</li>
+                        <li>@Html.ActionLink("退出", "Quit", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("填报", "Index", "Home")</li>
+                        if (Session["student"] != null && Session["student"].ToString() != string.Empty)
+                        {
+                            <li>@Html.ActionLink("修改密码", "ChangePassword", "Home")</li>
+                            <li>@Html.ActionLink("退出", "Quit", "Home")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("登录", "Login", "Home")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+    </nav>
+    <div class="container">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
+            <p>&copy; @DateTime.Now.Year - 四川大学锦城学院 - 计算机与软件学院</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var path = location.pathname;
+            var navs = $('ul.navbar-nav li');
+            for (var i = 0; i < navs.length; i++) {
+                if ($(navs[i]).find('a').attr('href') == path) {
+                    $(navs[i]).addClass('active');
+                } else {
+                    $(navs[i]).removeClass('active');
+                }
+            }
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
