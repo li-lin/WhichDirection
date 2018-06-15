@@ -43,11 +43,12 @@ namespace WhichDirection.Controllers
             return View();
         }
 
-        public ActionResult Select(string jsonText)
+        public ActionResult Select()
         {
             //格式：key:方向  value:对应排序
             //无法直接将json转换为int,int做了个过渡操作
             int x, y;
+            string jsonText = "{'4':'2','2':'1'}";
             var user = StuIsLoginIn.GetUser();
             JavaScriptSerializer sa = new JavaScriptSerializer();
             Dictionary<int, int> jsonData2 = new Dictionary<int, int>();
@@ -58,7 +59,7 @@ namespace WhichDirection.Controllers
                 y = int.Parse(n.Value);
                 jsonData2.Add(x, y);
             }
-            if(d.SelectDirection(user, jsonData2))
+            if(d.SelectDirection(user.LoginName, jsonData2))
             {
                 user.IsCompleted = true;
                 s.AddStudent(user);

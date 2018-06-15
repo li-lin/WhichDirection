@@ -27,13 +27,13 @@ namespace WhichDirection.Core
         /// <param name="stu">学生</param>
         /// <param name="directionOrders">方向Id和排序的键值对</param>
         /// <returns></returns>
-        public bool SelectDirection(Student stu,Dictionary<int,int> directionOrders)
+        public bool SelectDirection(string name,Dictionary<int,int> directionOrders)
         {
             foreach(var item in directionOrders)
             {
                 DirectionOrder dd = new DirectionOrder();
                 dd.Order = item.Value;
-                dd.Student = stu;
+                dd.Student = dbContext.Students.Where(x=>x.LoginName==name).FirstOrDefault();
                 dd.Direction = dbContext.Directions.SingleOrDefault(d => d.Id == item.Key);
                 if (dd.Direction == null)
                 {

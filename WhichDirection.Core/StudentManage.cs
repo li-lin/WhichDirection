@@ -63,9 +63,7 @@ namespace WhichDirection.Core
             else
             {
                 var dir = dbContext.Students.Where(x => x.Id == student.Id).FirstOrDefault();
-                dir.Major = student.Major;
-                dir.LoginName = student.LoginName;
-                dir.Name = student.Name;
+                dir.IsCompleted = student.IsCompleted;
                 dir.Pwd = student.Pwd;
             }
             try

@@ -55,23 +55,6 @@ namespace WhichDirection.Controllers
             {
                 return Json("系统错误", JsonRequestBehavior.AllowGet);
             }
-            //}
-            //string currentAdmin = Session["admin"] as string;
-            //if (string.IsNullOrEmpty(currentAdmin))
-            //{
-            //    return RedirectToAction("Login", "Home");
-            //}
-
-            //var d = this.db.Directions.SingleOrDefault(dd => dd.Id == Id);
-            //if (d != null)
-            //{
-            //    this.db.Directions.Remove(d);
-            //    int i = this.db.SaveChanges();
-            //    if (i > 0)
-            //    {
-            //        return PartialView("GetDirections", bindDirectionViewModel());
-            //    }
-            //}
             
         }
 
