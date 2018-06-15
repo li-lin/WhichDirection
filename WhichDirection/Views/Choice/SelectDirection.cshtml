@@ -4,4 +4,11 @@
 }
 
 <h2>方向填报的具体页面</h2>
-
+<center>
+    <div>
+        @using (Html.BeginForm("Select", "Choice", FormMethod.Post, new { @class = "css" }))
+        {
+            <input type="submit" value="完成" />
+        }
+    </div>
+</center>

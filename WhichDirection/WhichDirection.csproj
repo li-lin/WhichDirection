@@ -152,7 +152,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\ChoiceController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DirectionController.cs" />
+    <Compile Include="Controllers\DirectionCourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="Helper\AdminIsLoginIn.cs" />
     <Compile Include="Helper\StuIsLoginIn.cs" />
     <Compile Include="Helper\TeIsLoginIn.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -262,10 +265,14 @@
     <Content Include="Views\AdminHome\Index.cshtml" />
     <Content Include="Views\Choice\ChangePwdShow.cshtml" />
     <Content Include="Views\Choice\SelectDirection.cshtml" />
+    <Content Include="Views\DirectionCourse\Index.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\AddCourseShow.cshtml" />
+    <Content Include="Views\DirectionCourse\Show.cshtml" />
+    <Content Include="Views\DirectionCourse\AddShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

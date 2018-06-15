@@ -12,8 +12,8 @@ namespace WhichDirection.Domain.Entities
     public class DirectionCourse
     {
         public int Id { get; set; }
-        public Course Course { get; set; }
-        public Direction Direction { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual Direction Direction { get; set; }
         /// <summary>
         /// 课程在该方向所在比重
         /// </summary>

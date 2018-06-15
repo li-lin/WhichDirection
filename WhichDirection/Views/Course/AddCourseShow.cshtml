@@ -1,0 +1,29 @@
+﻿@model WhichDirection.Domain.Entities.Course
+@{
+    ViewBag.Title = "AddCourseShow";
+}
+
+<h2>添加课程信息</h2>
+<center>
+    <div>
+        @using (Html.BeginForm("AddCourse", "Course", FormMethod.Post, new { @class = "css" }))
+        {
+            <table>
+                <tr>
+                    <td>
+                        课程名
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m=>m.CourseName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="添加" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</center>
+
