@@ -12,6 +12,7 @@ namespace WhichDirection.Domain.Entities
         /// <summary>
         /// 方向ID
         /// </summary>
+        [Key]
         public int Id { get; set; }
         /// <summary>
         /// 方向名
@@ -27,6 +28,6 @@ namespace WhichDirection.Domain.Entities
         /// 方向负责老师
         /// </summary>
         [Required]
-        public Teacher Director { get; set; }
+        public virtual Teacher Director { get; set; }
     }
 }

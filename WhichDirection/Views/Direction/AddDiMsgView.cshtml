@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "AddDiMsgView";
+}
+
+<h2>添加方向</h2>
+<center>
+    <div>
+        @using (Html.BeginForm("AddDiMsg", "Direction", FormMethod.Post, new { @class = "css" }))
+        {
+        <table>
+            <tr>
+                <td>
+                    方向名称:
+                </td>
+                <td>
+                    <input type="text" name="dname" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    负责老师:
+                </td>
+                <td>
+                    <input type="text" name="name" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    总人数:
+                </td>
+                <td>
+                    <input type="text" name="max" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="添加" />
+                </td>
+            </tr>
+        </table>
+        }
+    </div>
+</center>
+
+

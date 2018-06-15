@@ -150,7 +150,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\ChoiceController.cs" />
+    <Compile Include="Controllers\DirectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -158,6 +160,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AdminIsLoginIn.cs" />
+    <Compile Include="Helper\StuIsLoginIn.cs" />
+    <Compile Include="Helper\TeIsLoginIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,11 +253,19 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Student\AddStuMsgView.cshtml" />
     <Content Include="Views\Choice\Index.cshtml" />
+    <Content Include="Views\Teacher\ShowTeaMsg.cshtml" />
+    <Content Include="Views\Teacher\AddTeaMsgView.cshtml" />
+    <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\Direction\Index.cshtml" />
+    <Content Include="Views\Direction\ShowDiMsg.cshtml" />
+    <Content Include="Views\Direction\AddDiMsgView.cshtml" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Views\Choice\ChangePwdShow.cshtml" />
+    <Content Include="Views\Choice\SelectDirection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

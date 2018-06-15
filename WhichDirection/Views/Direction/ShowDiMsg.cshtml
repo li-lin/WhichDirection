@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "GetStuMsg";
+    ViewBag.Title = "ShowDiMsg";
 }
 
 <style type="text/css">
@@ -30,20 +30,24 @@
         }
 </style>
 
-<h2>学生信息</h2>
-<table class="imagetable">
+<h2>方向信息</h2>
+<table class="imagetable" id="directions">
     <tr>
-        <th>姓名</th>
-        <th>学号</th>
-        <th>专业</th>
+        <th>方向名</th>
+        <th>负责老师</th>
+        <th>方向人数</th>
+        <th>操作</th>
     </tr>
-    @foreach (var n in ViewBag.stumsg)
+    @foreach (var n in ViewBag.dimsg)
     {
-        <tr>
-            <td>@n.Name</td>
-            <td>@n.LoginName</td>
-            <td>@n.Major</td>
-        </tr>
+    <tr>
+        <td>@n.Name</td>
+        <td>@n.Director.Name</td>
+        <td>@n.Max</td>
+        <td>
+            @Html.ActionLink("删除", "DirectionDel",new { Id=n.Id},new { onclick= "return confirm('确认删除？')" })
+        </td>
+    </tr>
     }
 </table>
 

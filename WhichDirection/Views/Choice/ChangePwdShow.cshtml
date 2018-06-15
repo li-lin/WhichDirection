@@ -1,0 +1,29 @@
+﻿@model WhichDirection.Domain.Entities.Student
+@{
+    ViewBag.Title = "ChangePwdShow";
+}
+
+<h2>修改密码</h2>
+<center>
+    <div>
+        @using (Html.BeginForm("ChangePwd", "Choice", FormMethod.Post, new { @class = "css" }))
+        {
+            <table>
+                <tr>
+                    <td>
+                        新密码:
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.Pwd)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="修改" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</center>
+

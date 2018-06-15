@@ -8,9 +8,11 @@ using System.Web.Mvc;
 using WhichDirection.Core;
 using WhichDirection.Domain;
 using WhichDirection.Domain.Entities;
+using WhichDirection.Helper;
 
 namespace WhichDirection.Controllers
 {
+    [AdminIsLoginIn]
     public class StudentController : Controller
     {
         StudentManage stu = new StudentManage();

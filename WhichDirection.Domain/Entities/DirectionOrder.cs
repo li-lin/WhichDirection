@@ -18,10 +18,10 @@ namespace WhichDirection.Domain.Entities
         /// <summary>
         /// 选择的方向
         /// </summary>
-        public Direction Direction { get; set; }
+        public virtual Direction Direction { get; set; }
         /// <summary>
         /// 学生
         /// </summary>
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace WhichDirection.Core
     /// </summary>
     public class TeacherManage
     {
-        WdDbContext dbContext = new WdDbContext();
+        WdDbContext  dbContext = new WdDbContext();
 
         #region 查询教师信息
         /// <summary>
@@ -38,7 +38,8 @@ namespace WhichDirection.Core
         /// <returns></returns>
         public Teacher GetTeacherByName(string name)
         {
-            return dbContext.Teachers.Where(t => t.Name == name).FirstOrDefault();
+            Teacher teacher = dbContext.Teachers.Where(t => t.Name == name).FirstOrDefault();
+            return teacher;
         }
 
         /// <summary>
@@ -158,6 +159,7 @@ namespace WhichDirection.Core
             }
             return b;
         }
-        #endregion       
+        #endregion
+        
     }
 }

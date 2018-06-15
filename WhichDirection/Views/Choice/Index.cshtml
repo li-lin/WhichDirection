@@ -1,7 +1,22 @@
-﻿
+﻿@model WhichDirection.Domain.Entities.Student
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>选择方向页面</h2>
+<h2>个人中心</h2>                               <h3></h3>
+<ul>
+    <li>
+        @Html.ActionLink("进行方向填报", "SelectDirection")
+    </li>
+    <li>
+        @Html.ActionLink("修改个人密码", "ChangePwdShow")
+    </li>
+    @if (!(bool)ViewData["iscompleted"]) { }
+    else
+    {
+    <li>
+        @Html.ActionLink("查看我的选择", "StudentChoice")
+    </li>
+    }
+</ul>
 

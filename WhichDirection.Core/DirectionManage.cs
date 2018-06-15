@@ -24,11 +24,12 @@ namespace WhichDirection.Core
         /// </summary>
         /// <param name="direction"></param>
         /// <returns></returns>
-        public bool AddDirection(Direction direction)
+        public bool AddDirection(Direction direction,String Name)
         {
             Direction dir = dbContext.Directions.Where(x => x.Id == direction.Id).FirstOrDefault();
             if (dir == null)
             {
+                direction.Director= dbContext.Teachers.Where(x=>x.Name==Name).FirstOrDefault();
                 dbContext.Directions.Add(direction);
             }
             else

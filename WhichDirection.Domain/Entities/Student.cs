@@ -7,13 +7,7 @@ using System.Threading.Tasks;
 namespace WhichDirection.Domain.Entities
 {
     public class Student:User
-    {
-        public Student()
-        {
-            Directions = new List<Direction>();
-        }
-        
-        /// <summary>
+    {        /// <summary>
         /// 专业
         /// </summary>
         public string Major { get; set; }
@@ -21,7 +15,5 @@ namespace WhichDirection.Domain.Entities
         /// 是否完成方向选择
         /// </summary>
         public bool IsCompleted { get; set; }
-
-        public IList<Direction> Directions { get; set; }
     }
 }

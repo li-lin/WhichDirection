@@ -1,6 +1,6 @@
-﻿
+﻿@model WhichDirection.Domain.Entities.Teacher
 @{
-    ViewBag.Title = "GetStuMsg";
+    ViewBag.Title = "ShowTeaMsg";
 }
 
 <style type="text/css">
@@ -29,21 +29,26 @@
             border-color: #999999;
         }
 </style>
-
-<h2>学生信息</h2>
+<h2>教师信息</h2>
 <table class="imagetable">
     <tr>
         <th>姓名</th>
-        <th>学号</th>
-        <th>专业</th>
+        <th>工号</th>
+        <th>负责方向</th>
     </tr>
-    @foreach (var n in ViewBag.stumsg)
+    @foreach (var n in ViewBag.temsg)
     {
-        <tr>
-            <td>@n.Name</td>
-            <td>@n.LoginName</td>
-            <td>@n.Major</td>
-        </tr>
+    <tr>
+        <td>@n.Name</td>
+        <td>@n.LoginName</td>
+        @if (n.Direction == null)
+        {
+            <td>暂未负责方向</td>}
+        else
+        {
+            <td>@n.Direction.Name</td>
+        }
+    </tr>
     }
 </table>
 
